@@ -1,0 +1,58 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define max 10
+
+using namespace std;
+
+struct vec{
+	int v[max];
+};
+
+void cargarmatriz (vec mat[max][max],int m,int n,int tm);
+void mostrarmatriz (vec mat[max][max],int m,int n,int tm);
+void main()
+{
+	vec mat[max][max];
+	int m,n,tm;
+	cout<<"Coloque el tamaño de las filas de la matriz  : ";
+	cin>>n;
+	cout<<"Coloque el tamaño de las columnas de la matriz  :";
+	cin>>m;
+	cout<<"Coloque el tamaño del vector  :";
+	cin>>tm;
+	cargarmatriz (mat,m,n,tm);
+	mostrarmatriz (mat,m,n,tm);
+
+	getch();
+
+	
+}
+	void cargarmatriz (vec mat[max][max],int m,int n,int tm)
+	{
+		int i,j,l;
+		for(i=0;i<n;i++)
+	    for(j=0;j<m;j++)
+		for(l=0;l<tm;l++)
+	{
+		cout<<"M["<<i<<"] ["<<j<<"] .["<<l<<"]  :";
+		cin>>mat[i][j].v[l];
+
+	}
+
+	}
+
+	void mostrarmatriz (vec mat[max][max],int m,int n,int tm)
+	{
+		int i,j,l;
+		for(i=0;i<n;i++)
+	    for(j=0;j<m;j++)
+		for(l=0;l<tm;l++)
+	{
+		cout<<mat[i][j].v[l]<<endl;
+		
+
+	}
+
+	}
+	
