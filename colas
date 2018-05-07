@@ -1,0 +1,159 @@
+#pragma once
+#define max 10
+class cola
+{
+private:
+	int vcola[max];
+	int frente ;
+	int final;
+public:
+	bool agregar_cola(int dato);
+	bool eliminar_cola(int &dato);
+	bool colallena();
+	bool colavacia();
+	void mostrarcola();
+	cola(void);
+	~cola(void);
+};
+
+
+#include "StdAfx.h"
+#include <iostream>
+#include "conio.h"
+#include "cola.h"
+using namespace std;
+
+cola::cola(void)
+{
+	frente=0;
+	final=0;
+}
+
+
+cola::~cola(void)
+{
+}
+bool cola::colallena()
+{
+	if(final==max)
+		return true;
+	else 
+		return false;
+}
+bool cola::colavacia()
+{
+	if(final==0)
+		return true;
+	else
+		return false;
+}
+
+bool cola::agregar_cola(int dato)
+{
+	if(colallena()==false)
+	{
+		
+		vcola[final]=dato;
+		
+		
+		final++;
+		return true;
+	}
+	else
+		return false;
+}
+bool cola::eliminar_cola(int &dato)
+{
+	int i,j;
+	if (colavacia()==false)
+	{
+		
+		for(i=0;i<final-1;i++)
+		for(j=1;j<final;j++)
+		{
+		
+		
+		
+			vcola[i]=vcola[j];
+	   
+		}
+		
+		final--;
+		return true;
+	}
+	else 
+		return false;
+}
+
+void cola::mostrarcola()
+{
+	int t;
+	for(t=0;t<final;t++)
+	{
+		cout<<vcola[t]<<"|";
+		
+	}
+	cout<<"          "<<endl;
+	cout<<"          "<<endl;
+}
+
+
+// colas.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "cola.h"
+using namespace std;
+void main()
+
+{
+	cola cola1;
+	int dato,op;
+	cout<<"------------ MENU -------------------"<<endl;
+	do{
+	cout<<"1- Agregar dato a la cola "<<endl;
+	cout<<"2- Eliminar un dato de la cola "<<endl;
+	cout<<"3- Mostrar la cola "<<endl;
+	cout<<"4- Salir"<<endl;
+	cin>>op;
+
+	switch (op)
+	{
+	case 1:
+		{
+		
+			cout<<"Coloque el dato : "<<endl;
+			cin>>dato;
+			cola1.agregar_cola(dato);
+			
+			break;
+		}
+	case 2:
+		{
+			cola1.eliminar_cola(dato);
+			break;
+		}
+	case 3:
+		{
+			cola1.mostrarcola();
+			break;
+		}
+	case 4:
+		{
+			cout<<"Gracias!";
+			break;
+		}
+
+	default:
+		{
+		cout<<"Colque una opcion valida"<<endl;
+		getch();
+		}
+		
+	}
+	}while(op!=4);
+	getch();
+
+}
